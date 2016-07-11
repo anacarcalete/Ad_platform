@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<!--
+	Ion by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		
+		<title>No Sidebar</title>
+
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="stylesheet" type="text/css" href="css/file_upload.css"/>
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src = "js/test.js" </script>
+		</script>
+		<script>test()</script>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		
+		<script>
+		
+
+		function attemptLogout() 
+			{
+				var that = this;
+				$.ajax({
+					url: "/home",
+					type: "POST",
+					data: {logout : true},
+					success: function(data){
+			 			window.location = "http://localhost:3000/";
+					},
+					error: function(jqXHR){
+						console.log(jqXHR.responseText+' :: '+jqXHR.statusText);
+					}
+				});
+			}
+		
+		
+
+		</script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/site.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+	</head>
+	<body id="top">
+
+		<!-- Header -->
+			<header id="header" class="skel-layers-fixed">
+				<h1><a href="#">Advertising Platform</a></h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="index2.html">Home</a></li>
+						<li><a href="index2.html">My Ads</a></li>
+						<li><a href="no-sidebar.html">Create Ads</a></li>
+						<li><a href="home">User Account</a></li>
+						<li><a href="index2.html">My Ads</a></li>
+						<li><a href="#" onclick= attemptLogout()> Log Out</a>
+  </li>
+						
+					</ul>
+				</nav>
+
+
+
+  
+
+
+			</header>
+
+		<!-- Main -->
+			<section id="main" class="wrapper style1">
+				<header class="major">
+					<h2>Create Ads</h2>
+					
+				</header>
+				<div class="container">
+				<form method = "post"  action="/ad_form" >
+
+							<label>Ad Name 
+                    		</label> 
+                    		<input name = "ad_name" type = "text" name = "Ad name" />
+					
+		                   <label >URL
+		                    </label>
+		                    <input name = "url" class="long" type="text" value="http://"/>
+
+		                    <label >Image
+		                    </label>
+		                    <div class="inputBtnSection">
+
+								<input id="uploadFile" class="disableInputField" placeholder="Choose File" disabled="disabled" />
+
+
+								<label class="fileUpload">
+								    <input id="uploadBtn" type="file" class="upload" />
+								    <span class="btn btn-primary">Upload / Browse File ..</span>
+								</label>
+								    <script type="text/javascript">document.getElementById("uploadBtn").onchange = function () {
+								    document.getElementById("uploadFile").value = this.value;
+								};</script>
+				    
+				    		</div>
+                	
+		                   	
+		                
+		                    <label>Budget
+		                    </label>
+		                    <input name = "budget" type="text" maxlength="12"/>
+		                
+		                    <label name = "categories" class="optional">Categories
+		                    </label>
+		                    <input name = 'cat' type="text" class="long"/>
+		               
+		                    <label>Location
+		                    </label>
+		                    <input name = "loc" type="text" class="long"/>
+		                	
+		            
+		                	<input type="submit" value="Submit"/>
+               	
+            		
+					
+				</form>			
+				</div>
+			</section>
+
+		
+
+	</body>
+
+</html>

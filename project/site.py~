@@ -1,0 +1,65 @@
+import requests
+import json
+
+url = 'http://wikisensing.org/WikiSensingServiceAPI/'
+serviceKey = 'KarunMatharuV5UGndFEUeTddB9o4GmKw'
+def getQuery(url):
+    headers = {'Accept' : 'application/json'}
+    response = requests.get(url, headers = headers)
+    return response
+
+def getsmt():
+	
+	customURL = url + serviceKey + '/' + 'webBrowsing' + '/' + str(10)
+	response = getQuery(customURL)
+	return response
+
+def printResponse(response):
+    print '---------------RESPONSE---------------'
+    print response
+    if response.status_code == 200:
+        print '-------------RESPONSE BODY------------'
+        print json.dumps(response.json(), indent = 4)
+    print ''
+
+response = getsmt()
+res = response.json()
+print res['sensorRecords'][1]['sensorObject'][3]['value'] 
+
+
+siteList = []
+for i in xrange(len(res['sensorRecords'])):
+	print i+1
+	print  res['sensorRecords'][i]['sensorObject'][3]['value'] 
+	siteList.append(res['sensorRecords'][i]['sensorObject'][3]['value'])
+sites = []
+for site in siteList:
+	s = site[7:]
+	
+	w = 'www.'
+	if s[0:4]!= w:
+		s = w+s
+		
+	new_s = ''
+	for l in xrange(len(s)):
+		if s[l] == '/':
+			new_s = s[:l]
+			break
+		
+	sites.append(new_s)
+
+print sites	
+
+tuples = []
+for s in sites:
+	n = sites.count(s)
+	x = (s, n)
+	if not x in tuples:
+ 		tuples.append((s,n))
+	
+tuples = set(tuples)
+print tuples	
+
+print tuples[1][0]
+		
+
